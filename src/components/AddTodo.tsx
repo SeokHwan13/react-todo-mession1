@@ -16,11 +16,14 @@ function AddTodo({ onAdd }: AddTodoProps) {
   return (
     <form onSubmit={handleSubmit}>
       <input
+        type="text"
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="할 일을 입력하세요"
       />
-      <button type="submit">추가!</button>
+      <button className="add-btn" type="submit">
+        추가!
+      </button>
     </form>
   );
 }

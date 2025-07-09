@@ -17,7 +17,9 @@ function TodoList({ todos, onDelete, onToggle }: TodoListProps) {
             onChange={() => onToggle(todo.id)}
           ></input>
           {todo.text}
-          <button onClick={() => onDelete(todo.id)}>삭제</button>
+          <button className="delete-btn" onClick={() => onDelete(todo.id)}>
+            삭제
+          </button>
         </li>
       ))}
     </ul>
