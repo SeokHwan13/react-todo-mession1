@@ -1,11 +1,14 @@
 import AddTodo from "./components/AddTodo";
 import TodoList from "./components/TodoList";
+import { useTodos } from "./hooks/useTodos";
 
 function App() {
+  const { todos, addTodo } = useTodos();
+
   return (
     <>
-      <AddTodo />
-      <TodoList />
+      <AddTodo onAdd={addTodo} />
+      <TodoList todos={todos} />
     </>
   );
 }
