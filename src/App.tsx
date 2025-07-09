@@ -3,12 +3,12 @@ import TodoList from "./components/TodoList";
 import { useTodos } from "./hooks/useTodos";
 
 function App() {
-  const { todos, addTodo } = useTodos();
+  const { todos, addTodo, checkTodo, removeTodo } = useTodos();
 
   return (
     <>
       <AddTodo onAdd={addTodo} />
-      <TodoList todos={todos} />
+      <TodoList todos={todos} onDelete={removeTodo} onToggle={checkTodo} />
     </>
   );
 }

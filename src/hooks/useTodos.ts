@@ -18,5 +18,20 @@ export function useTodos() {
     setTodos((todos) => [newTodo, ...todos]);
     console.log(todos);
   };
-  return { todos, addTodo };
+
+  //할 일 삭제
+  const removeTodo = (id: number) => {
+    setTodos((todos) => todos.filter((todo) => todo.id !== id));
+  };
+
+  //완료 체크
+  const checkTodo = (id: number) => {
+    setTodos((prev) =>
+      prev.map((todo) =>
+        todo.id === id ? { ...todo, checked: !todo.checked } : todo
+      )
+    );
+  };
+
+  return { todos, addTodo, removeTodo, checkTodo };
 }
