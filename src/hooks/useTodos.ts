@@ -1,5 +1,7 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Todo } from "../types/todo";
+
+const STORAGE_KEY = "todos";
 
 export function useTodos() {
   const [todos, setTodos] = useState<Todo[]>([
@@ -32,6 +34,19 @@ export function useTodos() {
       )
     );
   };
+  //localStorage 저장
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+  }, [todos]);
+
+  //초기 로드
+  useEffect(() => {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      const parsed: Todo[] = JSON.parse(stored);
+      setTodos(parsed);
+    }
+  }, []);
 
   return { todos, addTodo, removeTodo, checkTodo };
 }
